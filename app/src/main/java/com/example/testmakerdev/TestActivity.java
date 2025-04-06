@@ -1,4 +1,4 @@
-package com.example.test1;
+package com.example.testmakerdev;
 
 import android.os.Bundle;
 import android.view.View;
@@ -27,41 +27,5 @@ public class TestActivity extends AppCompatActivity {
         answersGroup = findViewById(R.id.answersGroup);
         checkAnswerButton = findViewById(R.id.checkAnswerButton);
         nextQuestionButton = findViewById(R.id.nextQuestionButton);
-
-        // Устанавливаем вопрос
-        setQuestion();
-
-        // Обработчик кнопки "Проверить ответ"
-        checkAnswerButton.setOnClickListener(v -> checkAnswer());
-
-        // Обработчик кнопки "Следующий вопрос"
-        nextQuestionButton.setOnClickListener(v -> nextQuestion());
-    }
-
-    private void setQuestion() {
-        // Здесь ты будешь устанавливать вопросы и ответы
-        questionTextView.setText("Вопрос №" + (currentQuestionIndex + 1));
-    }
-
-    private void checkAnswer() {
-        // Здесь будет логика для проверки правильности ответа
-        int selectedAnswerId = answersGroup.getCheckedRadioButtonId();
-        RadioButton selectedAnswer = findViewById(selectedAnswerId);
-
-        if (selectedAnswer != null) {
-            // Проверка правильности ответа
-            boolean isCorrect = selectedAnswer.getText().toString().equals("Правильный ответ");
-            if (isCorrect) {
-                // Ответ правильный
-            } else {
-                // Ответ неправильный
-            }
-        }
-    }
-
-    private void nextQuestion() {
-        currentQuestionIndex++;
-        setQuestion();
-        answersGroup.clearCheck();  // Очистить выбор ответов
     }
 }
