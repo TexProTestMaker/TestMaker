@@ -14,7 +14,6 @@ public class TestActivity extends AppCompatActivity {
     private TextView questionTextView;
     private RadioGroup answersGroup;
     private Button checkAnswerButton, nextQuestionButton;
-
     private int currentQuestionIndex = 0;
 
     @Override
