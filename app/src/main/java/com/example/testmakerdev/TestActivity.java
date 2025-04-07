@@ -63,7 +63,28 @@ public class TestActivity extends AppCompatActivity {
         }
     }
     private void checkAnswer() {
+        int selectedAnswerId = answersGroup.getCheckedRadioButtonId();
 
+        if (selectedAnswerId == -1) { //всплывающее окно, если нет ответа
+            Toast toast = Toast.makeText(this, "Выберите ответ!", Toast.LENGTH_SHORT);
+            toast.show();
+            return;
+        }
+        if (selectedAnswerId ==  currentQuestion.getCorrectAnswer()) { //!!Можно тоже сделать всплывающие окна, что ответ правильный/неправильный
+            counterCorrect++;
+        }
+
+        checkAnswerButton.setEnabled(false);
+        for (int i = 0; i < answersGroup.getChildCount(); i++) {
+            answersGroup.getChildAt(i).setEnabled(false);
+            //окрашиваем правильные и неправильные ответы после ответа
+            if (i == currentQuestion.getCorrectAnswer()) {
+                answersGroup.getChildAt(i).setBackgroundColor(ContextCompat.getColor(this, R.color.correct_answer));
+            }
+            else {
+                answersGroup.getChildAt(i).setBackgroundColor(ContextCompat.getColor(this, R.color.incorrect_answer));
+            }
+        }
     }
 
     private void nextQuestion() {
