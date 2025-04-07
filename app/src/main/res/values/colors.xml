@@ -8,5 +8,6 @@
     <color name="buttonColor">#FF6200</color>
     <color name="backgroundColor">#F0F0F0</color>
     <color name="buttonTextColor">#FFFFFF</color>
-
+    <color name="correct_answer">#66BB6A</color> <!-- Зелёный для правильного ответа -->
+    <color name="incorrect_answer">#EF5350</color> <!-- Красный для неправильного ответа -->
 </resources>
