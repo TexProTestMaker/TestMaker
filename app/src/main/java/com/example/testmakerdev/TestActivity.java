@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TestActivity extends AppCompatActivity {
@@ -39,6 +40,37 @@ public class TestActivity extends AppCompatActivity {
         //String filename = "filename";
         //currentTest= new Test(filename); Так должен инициализироваться тест в финальной форме - по названию
         //Здесь сделать прототип теста
+        Question quest1 = new Question();
+        Question quest2 = new Question();
+        List<String> list1 = new ArrayList<String>();
+        List<String> list2 = new ArrayList<String>();
+
+        list1.add("ans1");
+        list1.add("ans2");
+        list1.add("ans3");
+        list1.add("ans4");
+
+        list2.add("ans5");
+        list2.add("ans6");
+        list2.add("ans7");
+        list2.add("ans8");
+
+        quest1.answers = list1;
+        quest2.answers = list2;
+
+        quest1.correctAnswer = 2;
+        quest2.correctAnswer = 1;
+
+        quest1.questionText = "Aboba?";
+        quest2.questionText = "Ne Aboba?";
+
+        currentTest = new Test("prototype");
+        currentTest.name = "Prototype";
+        currentTest.type = "Test";
+        currentTest.addQuestion(quest1);
+        currentTest.addQuestion(quest2);
+
+        //конец прототипа
         allQuestions = currentTest.getQuestions();
         length = allQuestions.size();
 
