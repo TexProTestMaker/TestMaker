@@ -88,9 +88,23 @@ public class TestActivity extends AppCompatActivity {
     }
 
     private void nextQuestion() {
+        currentQuestionIndex++;
+        answersGroup.clearCheck();
+        if(currentQuestionIndex < length) {
+            setQuestion();
 
+            checkAnswerButton.setEnabled(true);
+            for (int i = 0; i < answersGroup.getChildCount(); i++) {
+                answersGroup.getChildAt(i).setEnabled(true);
+                //сбрасываем на дефолтный цвет
+                answersGroup.getChildAt(i).setBackgroundColor(ContextCompat.getColor(this, R.color.backgroundColor));
+            }
+        }
+        else {
+            //тут нужно сделать вывод статистики теста, реализовать позже
+        }
     }
-    private void exitTest() {
+    private void exitTest() { //на данный момент не реализовано, т.к. поздно получен исправленный layout
 
     }
 }
