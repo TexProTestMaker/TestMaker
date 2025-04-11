@@ -40,6 +40,7 @@ public class TestActivity extends AppCompatActivity {
         //String filename = "filename";
         //currentTest= new Test(filename); Так должен инициализироваться тест в финальной форме - по названию
         //Здесь сделать прототип теста
+        //
         Question quest1 = new Question();
         Question quest2 = new Question();
         List<String> list1 = new ArrayList<String>();
