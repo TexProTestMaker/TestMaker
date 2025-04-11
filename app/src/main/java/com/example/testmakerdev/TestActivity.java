@@ -41,6 +41,7 @@ public class TestActivity extends AppCompatActivity {
         //currentTest= new Test(filename); Так должен инициализироваться тест в финальной форме - по названию
         //Здесь сделать прототип теста
         //
+
         Question quest1 = new Question();
         Question quest2 = new Question();
         List<String> list1 = new ArrayList<String>();
@@ -65,22 +66,26 @@ public class TestActivity extends AppCompatActivity {
         quest1.questionText = "Aboba?";
         quest2.questionText = "Ne Aboba?";
 
-        currentTest = new Test("prototype");
+        currentTest = new Test();
         currentTest.name = "Prototype";
         currentTest.type = "Test";
         currentTest.addQuestion(quest1);
         currentTest.addQuestion(quest2);
 
         //конец прототипа
+
+
         allQuestions = currentTest.getQuestions();
         length = allQuestions.size();
 
         testTitleTextView.setText(currentTest.getName()); //заполняем название теста
 
-        setQuestion();
 
+
+        setQuestion();
         checkAnswerButton.setOnClickListener(v -> checkAnswer());
         nextQuestionButton.setOnClickListener(v -> nextQuestion());
+
     }
     private void setQuestion() {
         currentQuestion = allQuestions.get(currentQuestionIndex); //берём текущий вопрос из списка всех вопросов
