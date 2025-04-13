@@ -8,12 +8,14 @@ import androidx.appcompat.app.AppCompatActivity;
 public class LectureActivity extends AppCompatActivity {
     private TextView lectureNameTextView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lecture);
-        lectureNameTextView = findViewById(R.id.lectureName);
 
+        lectureNameTextView = findViewById(R.id.lectureName);
+        lectureNameTextView.setText("Здесь будет название лекции...");
     }
 
 }
