@@ -7,6 +7,9 @@ import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.testmakerdev.databinding.ActivityMainBinding;
 
@@ -26,10 +29,13 @@ public class MainActivity extends AppCompatActivity {
 
             switch (item.getItemId()) {
                 case R.id.lectures:
+                    replaceFragment(new LectureListFragment());
                     break;
                 case R.id.home:
+                    replaceFragment(new MainMenuFragment());
                     break;
                 case R.id.tests:
+                    replaceFragment(new TestListFragment());
                     break;
             }
 
@@ -51,5 +57,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
 
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, fragment);
+
+        fragmentTransaction.commit();
     }
 }
