@@ -4,6 +4,7 @@
     <item
         android:id="@+id/lectures"
         android:title="Lectures" />
+        android:icon="@drawable/ic_lectures_24" />
     <item
         android:id="@+id/home"
         android:title="Home" />
