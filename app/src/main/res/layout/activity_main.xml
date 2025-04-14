@@ -10,16 +10,16 @@
     android:gravity="center"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/buttonSwap"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="TestActivity"
-        />
-
     <FrameLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_navigation_menu"
+        />
 
 </LinearLayout>
