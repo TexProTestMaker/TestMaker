@@ -20,6 +20,21 @@ public class MainActivity extends AppCompatActivity {
         //EdgeToEdge.enable(this);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        replaceFragment(new MainMenuFragment());
+
+        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
+
+            switch (item.getItemId()) {
+                case R.id.lectures:
+                    break;
+                case R.id.home:
+                    break;
+                case R.id.tests:
+                    break;
+            }
+
+            return true;
+        });
 
 
 
