@@ -27,16 +27,17 @@ public class MainActivity extends AppCompatActivity {
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
-            switch (item.getItemId()) {
-                case R.id.lectures:
-                    replaceFragment(new LectureListFragment());
-                    break;
-                case R.id.home:
-                    replaceFragment(new MainMenuFragment());
-                    break;
-                case R.id.tests:
-                    replaceFragment(new TestListFragment());
-                    break;
+            int itemID = item.getItemId();
+
+            if (itemID == R.id.lectures) {
+                replaceFragment(new LectureListFragment());
+
+            } else if (itemID == R.id.home) {
+                replaceFragment(new MainMenuFragment());
+
+            } else if (itemID == R.id.tests) {
+                replaceFragment(new TestListFragment());
+
             }
 
             return true;
