@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Название лекции -->
+    <!-- Верхнее текстовое поле -->
     <TextView
         android:id="@+id/lectureName"
         android:layout_width="match_parent"
@@ -17,19 +17,42 @@
         android:layout_marginBottom="12dp"
         android:textStyle="bold" />
 
-    <!-- PDF View (займет всё доступное пространство) -->
+    <!-- Основная часть экрана с PDFView -->
     <com.github.barteksc.pdfviewer.PDFView
         android:id="@+id/pdfView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <!-- Кнопка "Следующая страница" -->
-    <Button
-        android:id="@+id/nextPageButton"
+    <!-- Нижние кнопки -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Следующая страница"
-        android:layout_marginTop="12dp" />
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:padding="8dp">
+
+        <Button
+            android:id="@+id/buttonBack"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Назад" />
+
+        <Button
+            android:id="@+id/prevPageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Prev" />
+
+        <Button
+            android:id="@+id/nextPageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Next" />
+
+    </LinearLayout>
 
 </LinearLayout>
