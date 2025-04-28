@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
     //aboba
     private Button button;
-    private Button buttonLecture;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,16 +24,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        buttonLecture = findViewById(R.id.buttonLecture);
-        buttonLecture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LectureActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
 
     }
 }
