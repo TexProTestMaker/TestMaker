@@ -8,8 +8,8 @@ import com.github.barteksc.pdfviewer.PDFView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.view.View;
-
-import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LectureActivity extends AppCompatActivity {
     private TextView lectureNameTextView;
@@ -20,7 +20,11 @@ public class LectureActivity extends AppCompatActivity {
     private int currentPage = 0;
     private int totalPages = 0;
 
-    private static final String FILE_NAME = "test.txt"; // имя вашего PDF в assets или во внутренней памяти
+    private List<String> txtPages = new ArrayList<>();
+    private static final int LINES_PER_PAGE = 30; // отрегулируй под размер экрана
+    private static final String FILE_NAME = "test.txt"; // имя файла
+
+    private boolean isPdf = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +33,7 @@ public class LectureActivity extends AppCompatActivity {
 
         lectureNameTextView = findViewById(R.id.lectureName);
         pdfView = findViewById(R.id.pdfView);
-        textView=findViewById(R.id.textView);
+        textView = findViewById(R.id.textView);
         nextPageButton = findViewById(R.id.nextPageButton);
         prevPageButton = findViewById(R.id.prevPageButton);
 
@@ -43,48 +47,80 @@ public class LectureActivity extends AppCompatActivity {
                 finish();
             }
         });
-            if (FILE_NAME.endsWith(".pdf")) {
-                pdfView.setVisibility(View.VISIBLE); // показать pdfView
-                textView.setVisibility(View.GONE);   // спрятать textView
 
-                pdfView.fromAsset(FILE_NAME)
-                        .defaultPage(currentPage)
-                        .enableSwipe(false)
-                        .onLoad(nbPages -> totalPages = nbPages)
-                        .onPageChange((page, pageCount) -> currentPage = page)
-                        .load();
-            } else if (FILE_NAME.endsWith(".txt")) {
-                pdfView.setVisibility(View.GONE);
-                textView.setVisibility(View.VISIBLE);
+        if (FILE_NAME.endsWith(".pdf")) {
+            isPdf = true;
+            pdfView.setVisibility(View.VISIBLE);
+            textView.setVisibility(View.GONE);
 
-                try {
-                    InputStream is = getAssets().open(FILE_NAME);
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-                    StringBuilder builder = new StringBuilder();
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        builder.append(line).append('\n');
+            pdfView.fromAsset(FILE_NAME)
+                    .defaultPage(currentPage)
+                    .enableSwipe(false)
+                    .onLoad(nbPages -> totalPages = nbPages)
+                    .onPageChange((page, pageCount) -> currentPage = page)
+                    .load();
+        } else if (FILE_NAME.endsWith(".txt")) {
+            isPdf = false;
+            pdfView.setVisibility(View.GONE);
+            textView.setVisibility(View.VISIBLE);
+
+            try {
+                InputStream is = getAssets().open(FILE_NAME);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+                String line;
+                int lineCount = 0;
+                StringBuilder pageBuilder = new StringBuilder();
+
+                while ((line = reader.readLine()) != null) {
+                    pageBuilder.append(line).append('\n');
+                    lineCount++;
+                    if (lineCount >= LINES_PER_PAGE) {
+                        txtPages.add(pageBuilder.toString());
+                        pageBuilder.setLength(0);
+                        lineCount = 0;
                     }
-                    textView.setText(builder.toString());
-                } catch (IOException e) {
-                    e.printStackTrace();
                 }
-            } else {
-                // Неподдерживаемый формат
+                // Последняя страница
+                if (pageBuilder.length() > 0) {
+                    txtPages.add(pageBuilder.toString());
+                }
+                totalPages = txtPages.size();
+
+                showTxtPage(currentPage);
+
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+        } else {
+            // неподдерживаемый формат
+        }
 
         prevPageButton.setOnClickListener(v -> {
             if (currentPage > 0) {
                 currentPage--;
-                pdfView.jumpTo(currentPage, true);
+                if (isPdf) {
+                    pdfView.jumpTo(currentPage, true);
+                } else {
+                    showTxtPage(currentPage);
+                }
             }
-
         });
+
         nextPageButton.setOnClickListener(v -> {
             if (currentPage + 1 < totalPages) {
                 currentPage++;
-                pdfView.jumpTo(currentPage, true);
+                if (isPdf) {
+                    pdfView.jumpTo(currentPage, true);
+                } else {
+                    showTxtPage(currentPage);
+                }
             }
         });
+    }
+
+    private void showTxtPage(int page) {
+        if (page >= 0 && page < txtPages.size()) {
+            textView.setText(txtPages.get(page));
+        }
     }
 }
