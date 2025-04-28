@@ -1,6 +1,5 @@
 package com.example.testmakerdev;
 
-import java.io.*;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,13 +13,12 @@ import java.io.File;
 public class LectureActivity extends AppCompatActivity {
     private TextView lectureNameTextView;
     private PDFView pdfView;
-    private TextView textView;
     private Button nextPageButton;
     private Button prevPageButton;
     private int currentPage = 0;
     private int totalPages = 0;
 
-    private static final String FILE_NAME = "test.txt"; // имя вашего PDF в assets или во внутренней памяти
+    private static final String PDF_FILE_NAME = "test_lecture_MATLAB.pdf"; // имя вашего PDF в assets или во внутренней памяти
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +27,6 @@ public class LectureActivity extends AppCompatActivity {
 
         lectureNameTextView = findViewById(R.id.lectureName);
         pdfView = findViewById(R.id.pdfView);
-        textView=findViewById(R.id.textView);
         nextPageButton = findViewById(R.id.nextPageButton);
         prevPageButton = findViewById(R.id.prevPageButton);
 
@@ -43,35 +40,13 @@ public class LectureActivity extends AppCompatActivity {
                 finish();
             }
         });
-            if (FILE_NAME.endsWith(".pdf")) {
-                pdfView.setVisibility(View.VISIBLE); // показать pdfView
-                textView.setVisibility(View.GONE);   // спрятать textView
-
-                pdfView.fromAsset(FILE_NAME)
-                        .defaultPage(currentPage)
-                        .enableSwipe(false)
-                        .onLoad(nbPages -> totalPages = nbPages)
-                        .onPageChange((page, pageCount) -> currentPage = page)
-                        .load();
-            } else if (FILE_NAME.endsWith(".txt")) {
-                pdfView.setVisibility(View.GONE);
-                textView.setVisibility(View.VISIBLE);
-
-                try {
-                    InputStream is = getAssets().open(FILE_NAME);
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-                    StringBuilder builder = new StringBuilder();
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        builder.append(line).append('\n');
-                    }
-                    textView.setText(builder.toString());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                // Неподдерживаемый формат
-            }
+        // Если PDF лежит в assets:
+        pdfView.fromAsset(PDF_FILE_NAME)
+                .defaultPage(currentPage)
+                .enableSwipe(false) // отключаем свайпы, чтобы только кнопкой листать
+                .onLoad(nbPages -> totalPages = nbPages)
+                .onPageChange((page, pageCount) -> currentPage = page)
+                .load();
 
         prevPageButton.setOnClickListener(v -> {
             if (currentPage > 0) {
@@ -88,3 +63,30 @@ public class LectureActivity extends AppCompatActivity {
         });
     }
 }
+
+
+
+
+/*
+
+package com.example.testmakerdev;
+
+import android.os.Bundle;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+
+public class LectureActivity extends AppCompatActivity {
+    private TextView lectureNameTextView;
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_lecture);
+
+        lectureNameTextView = findViewById(R.id.lectureName);
+        lectureNameTextView.setText("Здесь будет название лекции...");
+    }
+
+}
+*/
