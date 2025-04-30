@@ -1,5 +1,6 @@
 package com.example.testmakerdev;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +29,10 @@ public class LectureEditorActivity extends AppCompatActivity {
             editTextInput.setText("");
         });
 
-        buttonExit.setOnClickListener(v -> finish());
+        buttonExit.setOnClickListener(v -> {
+            Intent intent = new Intent(LectureEditorActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
     }
 }
