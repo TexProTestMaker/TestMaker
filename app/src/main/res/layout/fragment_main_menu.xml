@@ -20,4 +20,11 @@
         android:text="Переход в редактор тестов"
         android:layout_marginBottom="16dp"
         android:minWidth="200dp"/>
+
+    <Button
+        android:id="@+id/toLecturesActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Переход к лекциям"
+        android:minWidth="200dp"/>
 </FrameLayout>
