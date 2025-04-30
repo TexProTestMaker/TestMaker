@@ -5,13 +5,17 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".TestEditorActivity">
 
+    <!-- Название теста -->
     <TextView
         android:id="@+id/testTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Название теста:"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -20,17 +24,23 @@
         android:id="@+id/testTitleEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="введите название"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:hint="Введите название теста"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/testTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Текущий вопрос -->
     <TextView
         android:id="@+id/curQuestion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="Вопрос:"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/testTitleEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -38,17 +48,23 @@
         android:id="@+id/curQuestionEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="введите вопрос"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:hint="Введите вопрос"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/curQuestion"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Ответы -->
     <TextView
         android:id="@+id/answers"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="Ответы:"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/curQuestionEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -56,8 +72,9 @@
         android:id="@+id/answer1EditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="ответ 1"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:hint="Ответ 1"
+        app:layout_constraintTop_toBottomOf="@id/answers"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -65,8 +82,9 @@
         android:id="@+id/answer2EditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="ответ 2"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:hint="Ответ 2"
+        app:layout_constraintTop_toBottomOf="@id/answer1EditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -74,8 +92,9 @@
         android:id="@+id/answer3EditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="ответ 3"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:hint="Ответ 3"
+        app:layout_constraintTop_toBottomOf="@id/answer2EditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -83,40 +102,35 @@
         android:id="@+id/answer4EditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="ответ 4"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:hint="Ответ 4"
+        app:layout_constraintTop_toBottomOf="@id/answer3EditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Кнопки (пока без правильного позиционирования) -->
     <Button
         android:id="@+id/exitEditorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Exit"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="visible" />
+        android:text="Выход"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <Button
         android:id="@+id/addQuestionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="visible" />
+        android:text="Добавить вопрос"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <Button
         android:id="@+id/changeTitleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Change Title"
-        app:layout_constraintTop_toBottomOf="parent"
+        android:text="Изменить название"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="visible" />
-
-
+        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
