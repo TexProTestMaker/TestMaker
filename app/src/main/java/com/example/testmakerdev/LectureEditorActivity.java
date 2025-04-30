@@ -1,24 +1,33 @@
 package com.example.testmakerdev;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
 
 public class LectureEditorActivity extends AppCompatActivity {
+    private EditText editTextInput;
+    private Button buttonSubmit;
+    private Button buttonExit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_lecture_editor);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        editTextInput = findViewById(R.id.editTextInput);
+        buttonSubmit = findViewById(R.id.buttonSubmit);
+        buttonExit = findViewById(R.id.buttonExit);
+
+        buttonSubmit.setOnClickListener(v -> {
+            String inputText = editTextInput.getText().toString();
+            editTextInput.setText("");
         });
+
+        buttonExit.setOnClickListener(v -> finish());
     }
 }
