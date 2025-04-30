@@ -142,10 +142,11 @@ public class TestActivity extends AppCompatActivity {
             }
         }
         else {
-            //тут нужно сделать вывод статистики теста, реализовать позже
+            Toast toast = Toast.makeText(this, "Всего вопросов: " + currentQuestion + "\n Правильных ответов: " + counterCorrect, Toast.LENGTH_SHORT);
+            toast.show();
         }
     }
-    private void exitTest() { //на данный момент не реализовано, т.к. поздно получен исправленный layout
+    private void exitTest() {
         Intent intent = new Intent(TestActivity.this, TestListFragment.class);
         startActivity(intent);
     }
