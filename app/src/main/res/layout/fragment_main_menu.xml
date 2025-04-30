@@ -15,7 +15,9 @@
 
     <Button
         android:id="@+id/toTestEditorActivity"
-        android:layout_width="30px"
-        android:layout_height="30px"
-        />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Переход в редактор тестов"
+        android:layout_marginBottom="16dp"
+        android:minWidth="200dp"/>
 </FrameLayout>
