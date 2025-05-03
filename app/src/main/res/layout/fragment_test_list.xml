@@ -6,7 +6,7 @@
     android:orientation="vertical"
     tools:context=".TestListFragment">
 
-    <!-- AppBar как в activity_test.xml -->
+    <!-- Единый стиль AppBar для всех экранов -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -19,10 +19,12 @@
             android:layout_height="wrap_content"
             android:text="Список тестов"
             android:textColor="@android:color/white"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textStyle="bold"/>
     </LinearLayout>
 
-    <FrameLayout
+    <!-- Основной контент -->
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -30,16 +32,31 @@
             android:id="@+id/recViewList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="16dp"
-            android:clipToPadding="false"/>
+            android:paddingTop="8dp"
+            android:paddingBottom="72dp"
+            android:clipToPadding="false"
+            android:scrollbars="vertical"/>
 
         <TextView
             android:id="@+id/emptyStateView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="Нет созданных тестов\nНажмите чтобы добавить"
+            android:textSize="16sp"
+            android:visibility="gone"
+            android:padding="32dp"/>
+
+        <!-- Кнопка добавления в стиле activity_test_editor.xml -->
+        <Button
+            android:id="@+id/addButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Нет доступных тестов"
-            android:textSize="18sp"
-            android:visibility="gone"/>
-    </FrameLayout>
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="16dp"
+            android:text="Добавить"
+            android:minWidth="120dp"/>
+    </RelativeLayout>
 </LinearLayout>
