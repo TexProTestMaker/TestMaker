@@ -23,13 +23,17 @@
     <EditText
         android:id="@+id/testTitleEditText"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_marginTop="8dp"
+        android:minHeight="48dp"
+        android:padding="12dp"
         android:hint="Введите название теста"
         android:inputType="text"
         app:layout_constraintTop_toBottomOf="@id/testTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.9"/>
 
     <!-- Текущий вопрос -->
     <TextView
@@ -47,13 +51,17 @@
     <EditText
         android:id="@+id/curQuestionEditText"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_marginTop="8dp"
+        android:minHeight="48dp"
+        android:padding="12dp"
         android:hint="Введите вопрос"
         android:inputType="text"
         app:layout_constraintTop_toBottomOf="@id/curQuestion"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.9"/>
 
     <!-- Ответы -->
     <TextView
@@ -71,49 +79,66 @@
     <EditText
         android:id="@+id/answer1EditText"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_marginTop="8dp"
+        android:minHeight="48dp"
+        android:padding="12dp"
         android:hint="Ответ 1"
         app:layout_constraintTop_toBottomOf="@id/answers"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.9"/>
 
     <EditText
         android:id="@+id/answer2EditText"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_marginTop="8dp"
+        android:minHeight="48dp"
+        android:padding="12dp"
         android:hint="Ответ 2"
         app:layout_constraintTop_toBottomOf="@id/answer1EditText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.9"/>
 
     <EditText
         android:id="@+id/answer3EditText"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_marginTop="8dp"
+        android:minHeight="48dp"
+        android:padding="12dp"
         android:hint="Ответ 3"
         app:layout_constraintTop_toBottomOf="@id/answer2EditText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.9"/>
 
     <EditText
         android:id="@+id/answer4EditText"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_marginTop="8dp"
+        android:minHeight="48dp"
+        android:padding="12dp"
         android:hint="Ответ 4"
         app:layout_constraintTop_toBottomOf="@id/answer3EditText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.9"/>
 
-    <!-- Кнопки (финальное позиционирование) -->
+    <!-- Кнопки -->
     <Button
         android:id="@+id/exitEditorButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginBottom="16dp"
+        android:minWidth="120dp"
         android:text="Выход"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
@@ -121,8 +146,9 @@
     <Button
         android:id="@+id/addQuestionButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginBottom="16dp"
+        android:minWidth="120dp"
         android:text="Добавить вопрос"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -130,8 +156,9 @@
     <Button
         android:id="@+id/changeTitleButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginBottom="16dp"
+        android:minWidth="120dp"
         android:text="Изменить название"
         app:layout_constraintBottom_toTopOf="@id/exitEditorButton"
         app:layout_constraintStart_toStartOf="parent"
