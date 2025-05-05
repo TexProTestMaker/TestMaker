@@ -12,6 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LectureActivity extends AppCompatActivity {
+
+    private final String lectureName;
+    private final String lecturePath;
+
+    LectureActivity(String name, String path){
+        this.lectureName = name;
+        this.lecturePath = path;
+    }
+
     private TextView lectureNameTextView;
     private PDFView pdfView;
     private TextView textView;
@@ -22,7 +31,7 @@ public class LectureActivity extends AppCompatActivity {
 
     private List<String> txtPages = new ArrayList<>();
     private static final int LINES_PER_PAGE = 30; // отрегулируй под размер экрана
-    private static final String FILE_NAME = "test.txt"; // имя файла
+    private static final String FILE_NAME = "MATLAB.pdf" ; // имя файла
 
     private boolean isPdf = false;
 
@@ -37,7 +46,7 @@ public class LectureActivity extends AppCompatActivity {
         nextPageButton = findViewById(R.id.nextPageButton);
         prevPageButton = findViewById(R.id.prevPageButton);
 
-        lectureNameTextView.setText("Matlab");
+        lectureNameTextView.setText(lectureName);
         Button backButton = findViewById(R.id.buttonBack);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
