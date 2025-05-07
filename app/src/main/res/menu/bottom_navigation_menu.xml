@@ -3,14 +3,14 @@
 
     <item
         android:id="@+id/lectures"
-        android:title="Lectures" />
+        android:title="Lectures"
         android:icon="@drawable/ic_lectures_24" />
     <item
         android:id="@+id/home"
-        android:title="Home" />
+        android:title="Home"
         android:icon="@drawable/ic_home_24" />
     <item
         android:id="@+id/tests"
-        android:title="Tests" />
+        android:title="Tests"
         android:icon="@drawable/ic_tests"/>
 </menu>
