@@ -28,11 +28,21 @@ public class TestEditorActivity extends AppCompatActivity {
         answer3EditText = findViewById(R.id.answer3EditText);
         answer4EditText = findViewById(R.id.answer4EditText);
         exitEditorButton = findViewById(R.id.exitEditorButton);
+        addQuestionButton = findViewById(R.id.addQuestionButton);
 
         exitEditorButton.setOnClickListener(v -> {
             Intent intent = new Intent(TestEditorActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
+        });
+
+        addQuestionButton.setOnClickListener(v -> {
+            testTitleEditText.setText("");
+            curQuestionEditText.setText("");
+            answer1EditText.setText("");
+            answer2EditText.setText("");
+            answer3EditText.setText("");
+            answer4EditText.setText("");
         });
     }
 }
