@@ -42,8 +42,9 @@
         android:weightSum="3"
         android:padding="8dp">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonBack"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_weight="1"
@@ -52,8 +53,9 @@
             android:textColor="@color/white"
             android:layout_margin="4dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/prevPageButton"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_height="48dp"
@@ -63,8 +65,9 @@
             android:textColor="@color/white"
             android:layout_margin="4dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/nextPageButton"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_weight="1"
