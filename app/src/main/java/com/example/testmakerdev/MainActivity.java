@@ -61,7 +61,27 @@ public class MainActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(this);
         viewPager.setAdapter(adapter);
 
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                bottomNavigationView.getMenu().getItem(position).setChecked(true);
+            }
+        });
 
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.home) {
+                viewPager.setCurrentItem(0);
+                return true;
+            } else if (id == R.id.lectures) {
+                viewPager.setCurrentItem(1);
+                return true;
+            } else if (id == R.id.tests) {
+                viewPager.setCurrentItem(2);
+                return true;
+            }
+            return false;
+        });
     }
 
     /*private void replaceFragment(Fragment fragment) {
