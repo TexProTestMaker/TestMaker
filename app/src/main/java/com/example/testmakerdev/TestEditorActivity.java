@@ -32,4 +32,9 @@ public class TestEditorActivity extends AppCompatActivity {
 
 
     }
+    private exitEditor() {
+        Intent intent = new Intent(TestActivity.this, TestListFragment.class);
+        startActivity(intent);
+    }
+
 }
