@@ -1,62 +1,24 @@
 package com.example.testmakerdev;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.testmakerdev.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    private ViewPager2 viewPager;
-    private BottomNavigationView bottomNavigationView;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //EdgeToEdge.enable(this);
-
-        /*binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        replaceFragment(new MainMenuFragment());
 
-        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-
-            int itemID = item.getItemId();
-            if (itemID == R.id.home) {
-                replaceFragment(new MainMenuFragment());
-
-            } else if (itemID == R.id.lectures) {
-                replaceFragment(new LectureListFragment());
-
-            } else if (itemID == R.id.tests) {
-                replaceFragment(new TestListFragment());
-
-            }
-
-            return true;
-        });*/
-
-        /*button = findViewById(R.id.buttonSwap);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TestActivity.class);
-                startActivity(intent);
-            }
-        });*/
-
-        viewPager = findViewById(R.id.viewPager);
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
-
+        ViewPager2 viewPager = binding.viewPager;
+        BottomNavigationView bottomNavigationView = binding.bottomNavigationView;
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(this);
         viewPager.setAdapter(adapter);
@@ -83,12 +45,4 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
     }
-
-    /*private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout, fragment);
-
-        fragmentTransaction.commit();
-    }*/
 }
