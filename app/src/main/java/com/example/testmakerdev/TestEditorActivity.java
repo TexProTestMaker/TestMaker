@@ -32,7 +32,9 @@ public class TestEditorActivity extends AppCompatActivity {
         answer3EditText = findViewById(R.id.answer3EditText);
         answer4EditText = findViewById(R.id.answer4EditText);
 
-
+        changeTitleButton.setOnClickListener(v -> changeTitle());
+        addQuestionButton.setOnClickListener(v -> addQuestionClick());
+        exitEditorButton.setOnClickListener(v -> exitEditor());
     }
     private void changeTitle() {
         String text = testTitleEditText.getText().toString();
