@@ -38,7 +38,11 @@ public class TestEditorActivity extends AppCompatActivity {
     }
     private void changeTitle() {
         String text = testTitleEditText.getText().toString();
-        currentTest.name = "text";
+        if (!text.isEmpty()) {
+            currentTest.name = text;
+        } else {
+            Toast.makeText(this, "Поле testTitle пустое", Toast.LENGTH_SHORT).show();
+        }
         testTitleEditText.setText("");
     }
 
@@ -52,17 +56,31 @@ public class TestEditorActivity extends AppCompatActivity {
         String corAns = corAnsEditText.getText().toString();
         List<String> list = new ArrayList<String>();
 
-        if (answer1.length() > 0) {
+        if (!answer1.isEmpty()) {
             list.add(answer1);
+        } else {
+            Toast.makeText(this, "Поле answer1 пустое", Toast.LENGTH_SHORT).show();
         }
-        if (answer2.length() > 0) {
+        if (!answer2.isEmpty()) {
             list.add(answer2);
+        } else {
+            Toast.makeText(this, "Поле answer2 пустое", Toast.LENGTH_SHORT).show();
         }
-        if (answer3.length() > 0) {
+        if (!answer3.isEmpty()) {
             list.add(answer3);
+        } else {
+            Toast.makeText(this, "Поле answer3 пустое", Toast.LENGTH_SHORT).show();
         }
-        if (answer4.length() > 0) {
+        if (!answer4.isEmpty()) {
             list.add(answer4);
+        } else {
+            Toast.makeText(this, "Поле answer4 пустое", Toast.LENGTH_SHORT).show();
+        }
+
+        if (!question.isEmpty()) {
+            list.add(question);
+        } else {
+            Toast.makeText(this, "Поле question пустое", Toast.LENGTH_SHORT).show();
         }
 
         int number = -1;
@@ -72,7 +90,7 @@ public class TestEditorActivity extends AppCompatActivity {
             Toast.makeText(this, "Ошибка: введите число!", Toast.LENGTH_SHORT).show();
         }
 
-        if ((list.size() == 4) && (number != -1) && (question.length() > 0)) {
+        if ((list.size() == 4) && (number != -1) && (!question.isEmpty())) {
             quest.answers = list;
             quest.correctAnswer = number;
             quest.questionText = question;
