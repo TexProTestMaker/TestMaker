@@ -13,9 +13,10 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class TestEditorActivity extends AppCompatActivity {
 
-   private EditText testTitleEditText, curQuestionEditText, answer1EditText, answer2EditText, answer3EditText, answer4EditText;
+    private EditText testTitleEditText, curQuestionEditText, answer1EditText, answer2EditText, answer3EditText, answer4EditText;
 
-   private Button exitEditorButton, addQuestionButton, changeTitleButton;
+    private Button exitEditorButton, addQuestionButton, changeTitleButton;
+    private Test currentTest;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +33,14 @@ public class TestEditorActivity extends AppCompatActivity {
 
 
     }
-    private exitEditor() {
-        Intent intent = new Intent(TestActivity.this, TestListFragment.class);
+    private void changeTitle() {
+        String text = testTitleEditText.getText().toString();
+        currentTest.name = "text";
+        testTitleEditText.setText("");
+    }
 
+    private void exitEditor() {
+        Intent intent = new Intent(TestActivity.this, TestListFragment.class);
         startActivity(intent);
     }
 }
