@@ -11,6 +11,22 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.os.Bundle;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class LectureActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_lecture);
+
+        String lectureName = getIntent().getStringExtra("lecture_name");
+        TextView textView = findViewById(R.id.lectureName);
+        textView.setText(lectureName);
+    }
+}
+/*
 public class LectureActivity extends AppCompatActivity {
 
     private final String lectureName;
@@ -19,6 +35,13 @@ public class LectureActivity extends AppCompatActivity {
     LectureActivity(String name, String path){
         this.lectureName = name;
         this.lecturePath = path;
+    }
+    public String getName() {
+        return lectureName;
+    }
+
+    public String getPath() {
+        return lecturePath;
     }
 
     private TextView lectureNameTextView;
@@ -133,3 +156,4 @@ public class LectureActivity extends AppCompatActivity {
         }
     }
 }
+*/
