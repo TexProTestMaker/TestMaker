@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
     //aboba
@@ -25,11 +26,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        buttonLecture = findViewById(R.id.buttonLecture);
+        buttonLecture = findViewById(R.id.button_lectures);
         buttonLecture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LectureActivity.class);
+                Intent intent = new Intent(MainActivity.this, LectureListFragment.class);
                 startActivity(intent);
             }
         });
