@@ -1,5 +1,6 @@
 package com.example.testmakerdev;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +19,7 @@ public class TestActivity extends AppCompatActivity {
 
     private TextView questionTextView, testTitleTextView;
     private RadioGroup answersGroup;
-    private Button checkAnswerButton, nextQuestionButton;
+    private Button checkAnswerButton, nextQuestionButton, exitTestButton;
     private int currentQuestionIndex = 0;
     private int counterCorrect = 0;
     private Test currentTest;
@@ -36,6 +37,7 @@ public class TestActivity extends AppCompatActivity {
         checkAnswerButton = findViewById(R.id.checkAnswerButton);
         nextQuestionButton = findViewById(R.id.nextQuestionButton);
         testTitleTextView = findViewById(R.id.testTitle);
+        exitTestButton = findViewById(R.id.exitButton);
 
         //String filename = "filename";
         //currentTest= new Test(filename); Так должен инициализироваться тест в финальной форме - по названию
@@ -85,6 +87,7 @@ public class TestActivity extends AppCompatActivity {
         setQuestion();
         checkAnswerButton.setOnClickListener(v -> checkAnswer());
         nextQuestionButton.setOnClickListener(v -> nextQuestion());
+        exitTestButton.setOnClickListener(v -> exitTest());
 
     }
     private void setQuestion() {
@@ -139,10 +142,12 @@ public class TestActivity extends AppCompatActivity {
             }
         }
         else {
-            //тут нужно сделать вывод статистики теста, реализовать позже
+            Toast toast = Toast.makeText(this, "Всего вопросов: " + currentQuestion + "\n Правильных ответов: " + counterCorrect, Toast.LENGTH_SHORT);
+            toast.show();
         }
     }
-    private void exitTest() { //на данный момент не реализовано, т.к. поздно получен исправленный layout
-
+    private void exitTest() {
+        Intent intent = new Intent(TestActivity.this, TestListFragment.class);
+        startActivity(intent);
     }
 }

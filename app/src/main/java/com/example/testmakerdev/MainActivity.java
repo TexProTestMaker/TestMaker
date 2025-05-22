@@ -1,31 +1,47 @@
 package com.example.testmakerdev;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.example.testmakerdev.databinding.ActivityMainBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    //aboba
-    private Button button;
-    private Button buttonLecture;
+    private ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-        button = findViewById(R.id.buttonSwap);
-        button.setOnClickListener(new View.OnClickListener() {
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        ViewPager2 viewPager = binding.viewPager;
+        BottomNavigationView bottomNavigationView = binding.bottomNavigationView;
+
+        ViewPagerAdapter adapter = new ViewPagerAdapter(this);
+        viewPager.setAdapter(adapter);
+
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TestActivity.class);
-                startActivity(intent);
+            public void onPageSelected(int position) {
+                bottomNavigationView.getMenu().getItem(position).setChecked(true);
             }
         });
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.home) {
+                viewPager.setCurrentItem(0);
+                return true;
+            } else if (id == R.id.lectures) {
+                viewPager.setCurrentItem(1);
+                return true;
+            } else if (id == R.id.tests) {
+                viewPager.setCurrentItem(2);
+                return true;
         buttonLecture = findViewById(R.id.button_lectures);
         buttonLecture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, LectureListFragment.class);
                 startActivity(intent);
             }
+            return false;
         });
 
 
