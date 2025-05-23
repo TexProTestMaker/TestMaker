@@ -83,8 +83,9 @@
     <!-- Кнопка проверки ответа -->
     <Button
         android:id="@+id/checkAnswerButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:minWidth="200dp"
         android:text="Проверить"
         app:layout_constraintTop_toBottomOf="@id/answersGroup"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,8 +94,9 @@
     <!-- Кнопка следующего вопроса -->
     <Button
         android:id="@+id/nextQuestionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:minWidth="200dp"
         android:text="Следующий вопрос"
         app:layout_constraintTop_toBottomOf="@id/checkAnswerButton"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,8 +105,9 @@
 
     <Button
         android:id="@+id/exitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:minWidth="200dp"
         android:text="Выход"
         app:layout_constraintTop_toBottomOf="@id/statisticsTextView"
         app:layout_constraintStart_toStartOf="parent"
